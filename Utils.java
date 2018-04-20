@@ -28,6 +28,14 @@ public class Utils {
 	return text;
     
     }
+    public static String rightPad(String text , int desiredLength, char paddingItem) {
+	int difference = desiredLength - text.length();
+	for (int i = 0; i < difference; i++) {
+	    text =  "" + paddingItem + text;
+	}
+	return text;
+    
+    }
     
     public static String removeChars(String text, char c) {
 	String s = "";
@@ -60,12 +68,19 @@ public class Utils {
 	    min = max;
 	    max = temp;
 	}
-	ArrayList list = new ArrayList(max-min);
-	for(int i = min; i<max; i++) {
+	ArrayList list = new ArrayList();
+	for(int i = min; i < max; i++) {
 	    list.add(new Integer(i));
 	}
 	Collections.shuffle(list);
 	return list;
+    }
+    public static TNode[] arrayListToTNode(ArrayList a) {
+	TNode[] arr = new TNode[a.size()];
+	for (int i = 0; i < a.size(); i++) {
+	    arr[i] = new TNode ("" + a.get(i), 1, null, null, null);
+	}
+	return arr;
     }
     public static String arrayListToString(ArrayList a) {
 	String s = "";
